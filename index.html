@@ -5,10 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Even-or-Odd Guess (0–1000)</title>
 
-</head>
-<body>
-  <main class="container">
+  </head>
+  <body>
+    <main class="container">
 
   </main>
+</body>
+</html>
+
+    <header class="header">
+      <div class="header-content">
+        <h1>🎮 Even-Odd High-Low Game</h1>
+        <p class="tagline">Guess the number between 0 and 1000!</p>
+      </div>
+    </header>
+
+    
+    <section class="stats-dashboard">
+      <div class="stat-card stat-wins">
+        <img src="https://via.placeholder.com/60/4CAF50/FFFFFF?text=%E2%9C%85" alt="Wins" class="stat-icon" />
+        <div class="stat-info">
+          <span class="stat-label">Wins</span>
+          <span class="stat-value" id="winsCount">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-losses">
+        <img src="https://via.placeholder.com/60/F44336/FFFFFF?text=%E2%9D%8C" alt="Losses" class="stat-icon" />
+        <div class="stat-info">
+          <span class="stat-label">Losses</span>
+          <span class="stat-value" id="lossesCount">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-rounds">
+        <img src="https://via.placeholder.com/60/2196F3/FFFFFF?text=%F0%9F%94%84" alt="Rounds" class="stat-icon" />
+        <div class="stat-info">
+          <span class="stat-label">Rounds</span>
+          <span class="stat-value" id="roundsCount">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-streak">
+        <img src="https://via.placeholder.com/60/FF9800/FFFFFF?text=%F0%9F%94%A5" alt="Streak" class="stat-icon" />
+        <div class="stat-info">
+          <span class="stat-label">Streak</span>
+          <span class="stat-value" id="streakCount">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card stat-retries">
+        <img src="https://via.placeholder.com/60/9C27B0/FFFFFF?text=%F0%9F%94%81" alt="Retries" class="stat-icon" />
+        <div class="stat-info">
+          <span class="stat-label">Retries</span>
+          <span class="stat-value" id="retriesCount">0</span>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="game-area">
+      <div class="game-container">
+        <div class="game-icon">
+          <img src="https://via.placeholder.com/80/673AB7/FFFFFF?text=%F0%9F%8E%B2" alt="Game" />
+        </div>
+
+        
+        <div class="game-state active" id="startState">
+          <h2>Ready to Play?</h2>
+          <p>Guess a number between 0 and 1000. You have 10 attempts to get it right!</p>
+          <button class="btn btn-primary" onclick="startGame()">Start Game</button>
+        </div>
+
+        
+        <div class="game-state" id="playingState">
+          <div class="guess-info">
+            <h2>Round <span id="currentRound">1</span></h2>
+            <p class="attempt-counter">Guess <span id="guessCount">1</span> of 10</p>
+          </div>
+
+          <div class="input-section">
+            <input
+              type="number"
+              id="guessInput"
+              min="0"
+              max="1000"
+              placeholder="Enter your guess (0-1000)"
+              class="guess-input"
+            />
+            <button class="btn btn-submit" onclick="submitGuess()">Submit Guess</button>
+          </div>
+
+          <div class="feedback-section">
+            <div class="feedback-box" id="feedbackBox"></div>
+          </div>
+
+          <div class="hints-display" id="hintsDisplay"></div>
+
+          <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="quitGame()">Quit Game</button>
+          </div>
+        </div>
+
+        
+        <div class="game-state" id="winState">
+          <div class="result-box win-box">
+            <h2>🎉 You Won!</h2>
+            <p class="result-message">You guessed the number in <span id="winGuesses">0</span> attempts!</p>
+            <div class="result-stats">
+              <p>Total Wins: <strong id="finalWins">0</strong></p>
+              <p>Current Streak: <strong id="finalStreak">0</strong></p>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-primary" onclick="startGame()">Play Again</button>
+            <button class="btn btn-secondary" onclick="quitGame()">Quit</button>
+          </div>
+        </div>
+
+        
+        <div class="game-state" id="loseState">
+          <div class="result-box lose-box">
+            <h2>💔 Game Over</h2>
+            <p class="result-message">You've used all 10 attempts. The number was <span id="correctNumber">0</span>.</p>
+            <div class="result-stats">
+              <p>Total Losses: <strong id="finalLosses">0</strong></p>
+              <p>Current Streak: <strong id="finalStreakLose">0</strong></p>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-primary" onclick="startGame()">Try Again</button>
+            <button class="btn btn-secondary" onclick="retryRound()">Retry Round</button>
+            <button class="btn btn-quit" onclick="quitGame()">Quit Game</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="footer">
+      <p>&copy; 2025 Even-Odd High-Low Game | <a href="https://www.aoit.edu/" target="_blank">Visit AOIT</a></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
